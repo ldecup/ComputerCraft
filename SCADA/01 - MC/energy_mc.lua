@@ -12,9 +12,9 @@ local config = {
 ---- Init phase ----
 -- Peripheral detection
 config.sideModem = (pu.DetectPeriphByType("modem"))
-modem = peripheral.wrap(config.sideModem)
+local modem = peripheral.wrap(config.sideModem)
 config.sideDevice, deviceType = (pu.DetectPeriphByType("ENERGY_"..config.type))
-device = peripheral.wrap(config.sideDevice)
+local device = peripheral.wrap(config.sideDevice)
 
 -- Data init
 local data = dict.ENERGY_DATA
