@@ -7,17 +7,13 @@ local config = {
     updateFreqInSec = 1,
     -- Local channel for broadcast to the superviser
     channelId = tofill,
-
-    currentEnergy = 0,
-    capacity = 0,
-    currentFillPercent = 0,
 }
 
 ---- Init phase ----
 -- Peripheral detection
-config.sideModem = (pu.DetectPeriph("modem"))
+config.sideModem = (pu.DetectPeriphByType("modem"))
 modem = peripheral.wrap(config.sideModem)
-config.sideDevice, deviceType = (pu.DetectPeriph("ENERGY_"..config.type))
+config.sideDevice, deviceType = (pu.DetectPeriphByType("ENERGY_"..config.type))
 device = peripheral.wrap(config.sideDevice)
 
 -- Data init
@@ -42,7 +38,7 @@ end
 ---- MAIN ----
 while true do
     ---- Update local data ----
-    -- BR devices have a separated battery with its own methods
+    -- BR devices contain multiple devices with their own methods
     if config.type == "PROD" then
         data.currentEnergy = device.battery.stored()
         data.fuelTankStored = device.fuelTank().fuel()

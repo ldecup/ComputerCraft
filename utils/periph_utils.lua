@@ -16,7 +16,10 @@ local function DetectPeriphByType(deviceType)
             end
         end
     else
-        DetectDevice(deviceType)
+        local side = DetectDevice(deviceType)
+        if side ~= nil then
+            return side, device
+        end
     end
     return nil, nil
 end

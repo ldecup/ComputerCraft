@@ -9,7 +9,7 @@ local ENERGY_STORE = {
 
 local ENERGY_PROD = {
     -- Bigger Reactors
-    "BiggerReactors_Reactor"
+    "BiggerReactors_Reactor",
 }
 
 local ENERGY_DATA = {
