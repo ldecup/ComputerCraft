@@ -35,12 +35,20 @@ else
     data.capacity = device.getMaxEnergy()
 end
 
+-- Print debug data
+term.clear()
+term.setCursorPos(1,1)
+print("Monitoring enabled...")
+print("Monitoring side: "..config.sideDevice)
+print("Transmitting side: "..config.sideModem)
+print("Communication channel: "..config.channelId)
+
 ---- MAIN ----
 while true do
     ---- Update local data ----
     -- BR devices contain multiple devices with their own methods
     if config.type == "PROD" then
-        data.currentEnergy = device.battery.stored()
+        data.currentEnergy = device.battery().stored()
         data.fuelTankStored = device.fuelTank().fuel()
         data.fuelTankFillPer = data.fuelTankStored/data.fuelTankCap*100
         if device.coolantTank() ~= nil then
