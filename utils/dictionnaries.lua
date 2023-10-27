@@ -13,9 +13,10 @@ local ENERGY_PROD = {
 }
 
 local ENERGY_DATA = {
-    type = "",  -- PROD or STORE
-    unit = "",  -- Unit of energy, FE or RF or J
-    loc = {0, 0, 0},
+    uid = nil,  -- Computer ID
+    type = nil,  -- PROD or STORE
+    unit = nil,  -- Unit of energy, FE or RF or J
+    loc = {},
 
     -- Storage values
     currentEnergy = nil,

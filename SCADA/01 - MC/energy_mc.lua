@@ -22,6 +22,7 @@ device = peripheral.wrap(config.sideDevice)
 
 -- Data init
 local data = dict.ENERGY_DATA
+data.uid = os.getComputerID()
 data.type = config.type
 data.unit = config.unit
 data.loc = {gps.locate()}
