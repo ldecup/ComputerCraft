@@ -1,10 +1,10 @@
-local function WriteText(x,y,text,textColor,device)
+local function WriteText(device,x,y,text,textColor)
     device.setTextColor(textColor)
     device.setCursorPos(x,y)
     device.write(text)
 end
 
-local function DrawLine(x,y,width,height,lineColor,device)
+local function DrawLine(device,x,y,width,height,lineColor)
     for yPos = y, y+height-1 do
         device.setBackgroundColor(lineColor)
         device.setCursorPos(x,yPos)
