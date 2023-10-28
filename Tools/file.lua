@@ -1,5 +1,5 @@
 -- Sends or receives files over rednet
-fileInfo = {
+local fileInfo = {
     version = 1,
 }
 
