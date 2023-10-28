@@ -42,6 +42,10 @@ while true do
     -- Screen update
     local monitoredData = mon.GetDeviceDataById(monitoredDevices, config.deviceIdToMonitor)
     if monitoredData ~= nil then
+        gui.DrawLine()
+
+
+
         if monitoredData.type == "STORE" then
             
 
