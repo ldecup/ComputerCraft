@@ -29,7 +29,7 @@ else
         print("File received and saved")
     elseif arg[1] == "send" then
         -- Sends a file over rednet
-        local targetId = arg[3]
+        local targetId = tonumber(arg[3])
         local file = fs.open(filename, "r")
         local contents = file.readAll()
         file.close()

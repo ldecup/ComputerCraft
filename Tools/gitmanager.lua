@@ -40,9 +40,11 @@ while true do
             if messageTable[3] == "GET" then
                 shell.run("file get "..filename)
                 chatbox.sendMessage(config.keyWord.." "..filename.." received")
+                print("Received "..filename.." (requested by "..author..")")
             elseif messageTable[3] == "SEND" then
                 shell.run("file send "..filename.." "..messageTable[5])
                 chatbox.sendMessage(config.keyWord.." "..filename.." sent to "..messageTable[5])
+                print("Sent "..filename.." to "..messageTable[5].." (requested by "..author..")")
             end
         end
     end
