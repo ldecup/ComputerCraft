@@ -1,13 +1,6 @@
--- Receives a file over rednet
-print("Computer ID: "..os.getComputerID())
-write("Modem side: ")
-local modemSide = read()
-rednet.open(modemSide)
-write("File to receive: ")
-local filename = read()
-print("Ready to receive...")
+-- Small util to receive a file over rednet
+rednet.open(modemSidetofill)
 local _,message = rednet.receive()
-local file = fs.open(filename, "w")
+local file = fs.open(filenametofill, "w")
 file.writeLine(message)
 file.close()
-print("File received and saved")

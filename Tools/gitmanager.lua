@@ -19,6 +19,10 @@ config.sideModem = (pu.DetectPeriphByType("modem"))
 config.sideChat = (pu.DetectPeriphByType("chatbox"))
 local chatbox = peripheral.wrap(config.sideChat)
 
+term.clear()
+term.setCursorPos(1,1)
+print("GIT manager version "..fileInfo.version.." running...")
+
 while true do
     local chat, author, message = os.pullEvent("chat")
     local messageTable = luau.StringSplit(message, " ")
@@ -35,6 +39,7 @@ while true do
             chatbox.sendMessage(config.keyWord.." GETID")
         elseif messageTable[3] == "GETID" then
             chatbox.sendMessage(config.keyWord.." server ID: "..os.getComputerID())
+        -- TODO : add support for a remote ls
         else
             local filename = messageTable[4]
             if messageTable[3] == "GET" then
