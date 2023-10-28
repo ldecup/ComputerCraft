@@ -43,6 +43,7 @@ while true do
         else
             local filename = messageTable[4]
             if messageTable[3] == "GET" then
+                chatbox.sendMessage(config.keyWord.." waiting for "..filename.." on ID "..os.getComputerID().." ...")
                 shell.run("file get "..filename)
                 chatbox.sendMessage(config.keyWord.." "..filename.." received")
                 print("Received "..filename.." (requested by "..author..")")
