@@ -50,11 +50,11 @@ while true do
     if config.type == "PROD" then
         data.currentEnergy = device.battery().stored()
         data.fuelTankStored = device.fuelTank().fuel()
-        data.fuelTankFillPer = data.fuelTankStored/data.fuelTankCap*100
+        data.fuelTankFillPer = tonumber(string.format("%.3f", data.fuelTankStored/data.fuelTankCap*100))
         if device.coolantTank() ~= nil then
             -- Not all reactors have coolant tanks
             data.coolTankStored = device.coolantTank().coolant() -- Guessed coolant(), not tested
-            data.coolTankFillPer = data.coolTankStored/data.coolTankCap*100
+            data.coolTankFillPer = tonumber(string.format("%.3f", data.coolTankStored/data.coolTankCap*100))
         end
         data.active = device.active()
         -- TODO control rod management
@@ -62,7 +62,7 @@ while true do
     else
         data.currentEnergy = device.getEnergy()
     end
-    data.currentEnergyPercent = data.currentEnergy/data.capacity*100
+    data.currentEnergyPercent = tonumber(string.format("%.3f", data.currentEnergy/data.capacity*100))
 
     ---- Broadcast data on network ----
     modem.transmit(config.channelId,config.channelId,data)

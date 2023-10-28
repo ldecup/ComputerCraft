@@ -5,8 +5,10 @@ local gui = require("graph_utils")
 local config = {
     -- Local channel to supervise
     channelId = tofill,
-    displayType = tofill,   -- Supported values: STACK. todo: LINE, GRID
+    displayType = tofill,   -- Supported values: UNIQUE. todo: LINE, GRID, STACK
+    deviceIdToMonitor = tofill,    --UID of the device to display on the monitor
     monitoredDevices = {},
+    -- Only supports static monitor size (4*3)
 }
 
 ---- Init phase ----
@@ -26,9 +28,32 @@ while true do
 
     -- If we have seen that device before, update its data
     if mon.IsDeviceKnown(monitoredDevices, message) then
-        table[message.uid] = message
+        for _, device in pairs(monitoredDevices) do
+            if device[1] == message.uid then
+                device[2] = message
+            end
+        end
     --Otherwise, add it as a monitored device
     else
-        table.insert(monitoredDevices, {tostring(message.uid), message})
+        print("New device: "..message.uid)
+        table.insert(monitoredDevices, {message.uid, message})
     end
+
+    -- Screen update
+    local monitoredData = mon.GetDeviceDataById(monitoredDevices, config.deviceIdToMonitor)
+    if monitoredData ~= nil then
+        if monitoredData.type == "STORE" then
+            
+
+
+        elseif monitoredData.type == "PROD" then
+
+
+
+
+
+        end
+    end
+
+
 end

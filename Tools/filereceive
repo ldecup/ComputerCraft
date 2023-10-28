@@ -1,0 +1,10 @@
+-- Receives a file over rednet
+local modem = peripheral.find("modem") or error("No modem attached", 0)
+rednet.open(modem)
+print("Computer ID: "..os.getComputerID())
+write("File to receive: ")
+local filename = read()
+local id,message = rednet.receive()
+local file = fs.open(filename, "w")
+file.writeLine(message)
+file.close()
